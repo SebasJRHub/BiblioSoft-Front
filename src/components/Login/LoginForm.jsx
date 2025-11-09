@@ -1,77 +1,110 @@
 import React, { useState } from "react";
-import './LoginForm.css';
+import "./LoginForm.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const validarPassword = (password) => {
+    const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*.,;:?¡¿_+\-=])[A-Za-z0-9!@#$%^&*.,;:?¡¿_+\-=]{8,30}$/;
+    return regex.test(password);
+  };
 
-        try {
-            const response = await axios.post("http://localhost:8080/auth/login", {
-                username,
-                password
-            });
+  const validarUsuario = (usuario) => {
+    return usuario.length > 0 && usuario.length <= 10;
+  };
 
-            localStorage.setItem("token", response.data.token);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMsg("");
 
-            navigate("/");
+    if (!validarUsuario(username)) {
+      setErrorMsg("El usuario es obligatorio y debe tener 10 o menos caracteres");
+      return;
+    }
 
-        } catch (error) {
-            console.error("Error al iniciar sesión:", error);
-            alert("Usuario o contraseña incorrectos");
-        }
-    };
+    if (!validarPassword(password)) {
+      setErrorMsg("La contraseña no es correcta, por favor verifique o ingrese al link de recuperar contraseña");
+      return;
+    }
 
-    return (
-        <div className="lf-container">
-            <form onSubmit={handleSubmit}>
-                <h2 className="lf-titulo">Bibliocraft</h2>
-                <div className="lf-inputs">
-                    <input
-                        type="text"
-                        placeholder="Usuario"
-                        required
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <FaUser className="lf-icono" />
-                </div>
-                <div className="lf-inputs">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Contraseña"
-                        required
-                        value={password}              
-                        onChange={(e) => setPassword(e.target.value)}  
-                    />
-                    <span
-                        className="lf-iconoOjo"
-                        onClick={() => setShowPassword(!showPassword)}
-                    >
-                        {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </span>
-                    <FaLock className="lf-icono" />
-                </div>
+    try {
+      const response = await axios.post("http://localhost:8080/auth/login", {
+        username,
+        password,
+      });
 
-                <div className="lf-recuperarCon">
-                    <a href="">¿Olvidaste tu contraseña?</a>
-                </div>
+      localStorage.setItem("token", response.data.token);
 
-                <button type="submit" className="lf-boton">Iniciar Sesión</button>
+      if (response.data.role === "ADMIN") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        setErrorMsg("El usuario no existe, por favor intente de nuevo o regístrese.");
+      } else if (error.response && error.response.status === 401) {
+        setErrorMsg("La contraseña no es correcta, por favor verifique o ingrese al link de recuperar contraseña.");
+      } else {
+        setErrorMsg("Error al iniciar sesión. Verifique sus credenciales.");
+      }
+    }
+  };
 
-                <div className="lf-registrar">
-                    <p>¿No tienes una cuenta? <a href="">Regístrate</a></p>
-                </div>
-            </form>
+  return (
+    <div className="lf-container">
+      <form onSubmit={handleSubmit}>
+        <h2 className="lf-titulo">Bibliocraft</h2>
+        <div className="lf-inputs">
+          <input
+            type="text"
+            placeholder="Usuario"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            maxLength={10}
+          />
+          <FaUser className="lf-icono" />
         </div>
-    )
-}
+        <div className="lf-inputs">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Contraseña"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            maxLength={30}
+          />
+          <span
+            className="lf-iconoOjo"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+          <FaLock className="lf-icono" />
+        </div>
+        <div className="lf-recuperarCon">
+          <a href="">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" className="lf-boton">
+          Iniciar Sesión
+        </button>
+        {errorMsg && <p className="lf-error">{errorMsg}</p>}
+        <div className="lf-registrar">
+          <p>
+            ¿No tienes una cuenta? <a href="">Regístrate</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  );
+};
 
 export default LoginForm;
