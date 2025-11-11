@@ -18,6 +18,9 @@ class LibroService {
   deleteBook(id) {
     return axios.delete(`${API_URL}/deleteBook/${id}`);
   }
+  buscarLibros(query) {
+      return axios.get(`${API_URL}/search?query=${query}`);
+    }
 }
 
 export default new LibroService();
