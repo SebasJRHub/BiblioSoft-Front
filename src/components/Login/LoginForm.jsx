@@ -99,7 +99,7 @@ const LoginForm = () => {
         {errorMsg && <p className="lf-error">{errorMsg}</p>}
         <div className="lf-registrar">
           <p>
-            ¿No tienes una cuenta? <a href="">Regístrate</a>
+            ¿No tienes una cuenta? <a href="/register">Regístrate</a>
           </p>
         </div>
       </form>
