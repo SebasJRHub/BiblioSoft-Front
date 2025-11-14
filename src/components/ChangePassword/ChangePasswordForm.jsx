@@ -126,7 +126,7 @@ const ChangePassword = () => {
           <button
             type="button"
             className="cp-boton cp-boton-cancelar"
-            onClick={handleCancel}
+            onClick={() => navigate("/dashboard-user")}
           >
             Cancelar
           </button>

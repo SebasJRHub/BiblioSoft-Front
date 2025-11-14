@@ -1,53 +1,122 @@
-/* Contenedor de resultados */
-.result-container {
-  margin-top: 25px;
-  background-color: rgba(255, 255, 255, 0.12);
-  padding: 20px;
-  border-radius: 15px;
+/* Fondo general */
+body {
+  background-color: rgb(66, 0, 0);
 }
 
-/* Subtítulos */
-.result-container h3 {
-  margin-top: 20px;
-  font-size: 20px;
-  border-bottom: 1px solid white;
-  padding-bottom: 5px;
+/* Contenedor centrado */
+.buscar-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+/* Tarjeta estilo login */
+.buscar-card {
+  width: 420px;
+  background-color: rgb(114, 0, 0);
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 30px 40px;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Título */
+.buscar-card h2 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 22px;
   text-transform: uppercase;
 }
 
-/* Tarjeta de info del usuario */
-.user-info-card {
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
+/* Inputs igual que login */
+.form-group label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-/* Grid para las tarjetas */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  margin-top: 10px;
-}
-
-/* Tarjetas individuales */
-.info-card {
-  background-color: rgba(255, 255, 255, 0.18);
-  padding: 15px;
-  border-radius: 12px;
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 40px;
   border: 1px solid white;
-  transition: 0.2s ease;
+  background-color: transparent;
+  color: white;
 }
 
-.info-card:hover {
-  transform: scale(1.03);
-  background-color: rgba(255, 255, 255, 0.28);
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
-/* Texto vacío */
+/* Botones iguales que login */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.change-password-button,
+.cancel-button {
+  width: 48%;
+  border-radius: 40px;
+  height: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+}
+
+.change-password-button {
+  background: white;
+  color: rgb(114, 0, 0);
+}
+
+.cancel-button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+/* Hover */
+.change-password-button:hover {
+  background: rgb(230, 230, 230);
+}
+
+.cancel-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Mensaje */
+.message {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Contenedor de resultados */
+.result-box {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+}
+
+.result-box h3 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+
+/* Listas */
+.result-box ul {
+  padding-left: 20px;
+}
+
 .empty {
-  margin-top: 5px;
-  opacity: 0.8;
   font-style: italic;
+  opacity: 0.8;
 }

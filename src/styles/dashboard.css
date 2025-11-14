@@ -1,0 +1,38 @@
+.dashboard-container {
+  width: 450px;
+  background-color: rgb(114, 0, 0);
+  border-radius: 20px;
+  border: 2px solid white;
+  padding: 40px;
+  margin: 80px auto;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+.dashboard-container h1 {
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.dashboard-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dashboard-buttons button {
+  padding: 12px;
+  border-radius: 30px;
+  border: 1px solid white;
+  background: white;
+  color: rgb(114, 0, 0);
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+
+.dashboard-buttons button:hover {
+  background: rgb(240, 240, 240);
+}

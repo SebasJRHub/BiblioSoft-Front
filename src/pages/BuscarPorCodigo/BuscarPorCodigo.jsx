@@ -5,6 +5,24 @@ export default function BuscarPorCodigo() {
   const [code, setCode] = useState("");
   const [usuario, setUsuario] = useState(null);
   const [mensaje, setMensaje] = useState("");
+  const [errorInput, setErrorInput] = useState("");
+
+  const handleCodeChange = (e) => {
+    const value = e.target.value;
+
+    // Validar solo números
+    if (!/^\d*$/.test(value)) {
+      setErrorInput("Solo se permiten números.");
+    }
+    // Validar máximo 20 caracteres
+    else if (value.length > 20) {
+      setErrorInput("Código inválido, máximo 20 caracteres.");
+    } else {
+      setErrorInput("");
+    }
+
+    setCode(value);
+  };
 
   const buscarUsuario = async () => {
     if (!code.trim()) {
@@ -13,13 +31,24 @@ export default function BuscarPorCodigo() {
       return;
     }
 
+    if (errorInput) {
+      setMensaje(errorInput);
+      setUsuario(null);
+      return;
+    }
+
     try {
+      const token = localStorage.getItem("token");
+
       const response = await fetch(
-        `http://localhost:8080/api/user/buscar/${code}`
+        `http://localhost:8080/api/user/buscar/${code}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
       if (!response.ok) {
-        setMensaje("Usuario no encontrado.");
+        setMensaje("No se encontró un usuario con ese código.");
         setUsuario(null);
         return;
       }
@@ -27,85 +56,79 @@ export default function BuscarPorCodigo() {
       const data = await response.json();
       setUsuario(data);
       setMensaje("");
-    } catch (error) {
+    } catch {
       setMensaje("Error al conectar con el servidor.");
       setUsuario(null);
     }
   };
 
   return (
-    <div className="login-container">
-      <h2>Buscar Usuario por Código</h2>
+    <div className="buscar-container">
+      <div className="buscar-card">
+        <h2>Buscar Usuario por Código</h2>
 
-      <div className="form-group">
-        <label>Código del Usuario</label>
-        <input
-          type="text"
-          placeholder="Ingrese código..."
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-        />
-      </div>
+        <div className="form-group">
+          <label>Código del Usuario</label>
+          <input
+            type="text"
+            placeholder="Ingrese código..."
+            value={code}
+            onChange={handleCodeChange}
+          />
+        </div>
 
-      <div className="button-group">
-        <button className="change-password-button" onClick={buscarUsuario}>
-          Buscar
-        </button>
+        {errorInput && <div className="message">{errorInput}</div>}
 
-        <button
-          className="cancel-button"
-          onClick={() => {
-            setUsuario(null);
-            setMensaje("");
-            setCode("");
-          }}
-        >
-          Limpiar
-        </button>
-      </div>
+        <div className="button-group">
+          <button className="change-password-button" onClick={buscarUsuario}>
+            Buscar
+          </button>
 
-      {mensaje && <div className="message">{mensaje}</div>}
+          <button
+            className="cancel-button"
+            onClick={() => {
+              setUsuario(null);
+              setMensaje("");
+              setErrorInput("");
+              setCode("");
+            }}
+          >
+            Limpiar
+          </button>
+        </div>
 
-      {usuario && (
-        <div className="result-container">
-          <h3>Información del Usuario</h3>
+        {mensaje && <div className="message">{mensaje}</div>}
 
-          <div className="user-info-card">
+        {usuario && (
+          <div className="result-box">
+            <h3>Información del Usuario</h3>
             <p><strong>Nombre:</strong> {usuario.nombre}</p>
             <p><strong>Código:</strong> {usuario.codigo}</p>
-          </div>
 
-          <h3>Préstamos Realizados</h3>
-          <div className="card-grid">
+            <h3>Préstamos Realizados</h3>
             {usuario.prestamosRealizados.length > 0 ? (
-              usuario.prestamosRealizados.map((p, i) => (
-                <div className="info-card" key={i}>
-                  <p><strong>ID Préstamo:</strong> {p.id}</p>
-                  <p><strong>Fecha:</strong> {p.fechaPrestamo}</p>
-                  <p><strong>Libro:</strong> {p.libroTitulo}</p>
-                </div>
-              ))
+              <ul>
+                {usuario.prestamosRealizados.map((p, i) => (
+                  <li key={i}>ID: {p.id}</li>
+                ))}
+              </ul>
             ) : (
               <p className="empty">No hay préstamos registrados</p>
             )}
-          </div>
 
-          <h3>Libros en Poder</h3>
-          <div className="card-grid">
+            <h3>Libros en Poder</h3>
             {usuario.librosEnPoder.length > 0 ? (
-              usuario.librosEnPoder.map((l, i) => (
-                <div className="info-card" key={i}>
-                  <p><strong>Título:</strong> {l.titulo}</p>
-                  <p><strong>Autor:</strong> {l.autor}</p>
-                  <p><strong>ISBN:</strong> {l.isbn}</p>
-                </div>
-              ))
+              <ul>
+                {usuario.librosEnPoder.map((l, i) => (
+                  <li key={i}>{l.titulo} — {l.autor}</li>
+                ))}
+              </ul>
             ) : (
               <p className="empty">No tiene libros actualmente</p>
             )}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
