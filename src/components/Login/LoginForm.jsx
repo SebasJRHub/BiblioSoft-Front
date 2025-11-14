@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./LoginForm.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -73,8 +73,7 @@ const LoginForm = () => {
   return (
     <div className="lf-container">
       <form onSubmit={handleSubmit}>
-        <h2 className="lf-titulo">Bibliocraft</h2>
-
+        <h2 className="lf-titulo">Bibliosoft</h2>
         <div className="lf-inputs">
           <input
             type="text"
@@ -106,7 +105,7 @@ const LoginForm = () => {
         </div>
 
         <div className="lf-recuperarCon">
-          <a href="">¿Olvidaste tu contraseña?</a>
+          <Link to="/forgot">¿Olvidaste tu contraseña?</Link>
         </div>
 
         <button type="submit" className="lf-boton">
@@ -117,7 +116,7 @@ const LoginForm = () => {
 
         <div className="lf-registrar">
           <p>
-            ¿No tienes una cuenta? <a href="">Regístrate</a>
+            ¿No tienes una cuenta? <a href="/register">Regístrate</a>
           </p>
         </div>
       </form>

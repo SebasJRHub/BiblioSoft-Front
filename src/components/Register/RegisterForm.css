@@ -1,3 +1,21 @@
+/* -------- reset / global -------- */
+*{
+   box-sizing: border-box; 
+   margin: 0;
+   padding: 0;
+}
+body{
+    background:url('../../assets/fondo.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Ocultar botones nativos de autofill/clear en distintos navegadores */
 input::-ms-reveal,
 input::-ms-clear {
     display: none;
@@ -10,10 +28,11 @@ input::-webkit-clear-button {
     display: none !important;
 }
 
+/* -------- contenedor y tipografía -------- */
 .lf-container {
     width: 420px;
     background-color: rgb(114, 0, 0);
-    border: 2px solid rgb(54, 0, 0);
+    border: 2px solid white;
     border-radius: 20px;
     padding: 30px 40px;
 }
@@ -25,9 +44,10 @@ input::-webkit-clear-button {
     text-align: center;
 }
 
+/* -------- inputs y iconos -------- */
 .lf-container .lf-inputs {
     position: relative;
-    margin: 30px 0;
+    margin: 20px 0;
     width: 100%;
     height: 40px;
     border-color: #ffffff;
@@ -40,7 +60,7 @@ input::-webkit-clear-button {
     border: 1px solid rgb(255, 255, 255);
     background-color: transparent;
     outline: none;
-    padding: 12px 30px;
+    padding: 12px 40px; /* espacio para iconos */
     color: white;
 }
 
@@ -48,34 +68,33 @@ input::-webkit-clear-button {
     color: rgb(255, 255, 255, 0.5);
 }
 
-.lf-icono FaLock {
-    transform: translateY(-10px);
-}
-
+/* icono izquierdo */
 .lf-inputs .lf-icono {
     position: absolute;
-    left: 10px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
     color: #ffffff;
     font-size: 18px;
 }
 
+/* icono ojo/derecha */
 .lf-iconoOjo {
     position: absolute;
-    right: 10px;
+    right: 12px;
     top: 50%;
-    transform: translateY(-35%);
+    transform: translateY(-50%);
     color: #ffffff;
     font-size: 18px;
     cursor: pointer;
 }
 
+/* -------- links y botones -------- */
 .lf-recuperarCon {
     display: flex;
     flex-direction: row;
     justify-content: right;
-    margin: -25px 20px 20px 20px;
+    margin: -10px 0 15px 0;
     font-size: 13px;
 }
 
@@ -101,6 +120,7 @@ input::-webkit-clear-button {
     font-size: 16px;
     cursor: pointer;
     color: rgb(104, 0, 0);
+    margin-top: 10px;
 }
 
 .lf-registrar {
@@ -120,19 +140,44 @@ input::-webkit-clear-button {
     text-decoration: underline;
 }
 
+/* -------- mensajes -------- */
 .lf-error {
     margin-top: 15px;
     text-align: center;
     color: #ffb3b3;
     font-weight: 600;
     font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.06);
     border-radius: 10px;
     padding: 8px 10px;
     animation: fadeIn 0.3s ease-in-out;
 }
 
+.lf-exito {
+    margin-top: 15px;
+    text-align: center;
+    color: #b3ffb3;
+    font-weight: 600;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 8px 10px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* -------- animaciones -------- */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------- ajustes responsivos simples -------- */
+@media (max-width: 480px) {
+  .lf-container {
+    width: 90%;
+    padding: 20px;
+  }
+  .lf-titulo {
+    font-size: 30px;
+  }
 }

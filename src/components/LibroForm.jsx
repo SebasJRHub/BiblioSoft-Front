@@ -26,6 +26,7 @@ function LibroForm() {
       <input name="titulo" value={book.titulo} onChange={handleChange} placeholder="Título" />
       <input name="autor" value={book.autor} onChange={handleChange} placeholder="Autor" />
       <input name="anio" value={book.anio} onChange={handleChange} placeholder="Año" />
+      <input name="editorial" value={book.editorial} onChange={handleChange} placeholder="Editorial" />
       <button onClick={saveBook}>Guardar</button>
     </div>
   );
