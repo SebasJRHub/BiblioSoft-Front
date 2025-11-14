@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./LoginForm.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +45,7 @@ const LoginForm = () => {
       if (response.data.role === "ADMIN") {
         navigate("/admin");
       } else {
-        navigate("/");
+        navigate("/home");
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {
@@ -91,7 +91,7 @@ const LoginForm = () => {
           <FaLock className="lf-icono" />
         </div>
         <div className="lf-recuperarCon">
-          <a href="">¿Olvidaste tu contraseña?</a>
+          <Link to="/forgot">¿Olvidaste tu contraseña?</Link>
         </div>
         <button type="submit" className="lf-boton">
           Iniciar Sesión
