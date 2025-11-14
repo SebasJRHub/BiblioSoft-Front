@@ -1,0 +1,53 @@
+/* Contenedor de resultados */
+.result-container {
+  margin-top: 25px;
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* Subtítulos */
+.result-container h3 {
+  margin-top: 20px;
+  font-size: 20px;
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+/* Tarjeta de info del usuario */
+.user-info-card {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Grid para las tarjetas */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* Tarjetas individuales */
+.info-card {
+  background-color: rgba(255, 255, 255, 0.18);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid white;
+  transition: 0.2s ease;
+}
+
+.info-card:hover {
+  transform: scale(1.03);
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+/* Texto vacío */
+.empty {
+  margin-top: 5px;
+  opacity: 0.8;
+  font-style: italic;
+}
