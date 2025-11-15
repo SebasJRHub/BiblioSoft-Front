@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./LoginForm.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -40,13 +40,25 @@ const LoginForm = () => {
         password,
       });
 
+      // Guardar token y datos del usuario
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", response.data.role);
+      localStorage.setItem("username", response.data.username);
 
-      if (response.data.role === "ADMIN") {
-        navigate("/admin");
+        console.log("TOKEN RECIBIDO:", response.data.token);
+        console.log("ROL RECIBIDO:", response.data.role);
+        console.log("USERNAME RECIBIDO:", response.data.username);
+
+
+      const rol = response.data.role;
+
+      // Redirección según el rol
+      if (rol === "ADMIN") {
+        navigate("/dashboard-admin");
       } else {
-        navigate("/");
+        navigate("/dashboard-user");
       }
+
     } catch (error) {
       if (error.response && error.response.status === 404) {
         setErrorMsg("El usuario no existe, por favor intente de nuevo o regístrese.");
@@ -61,7 +73,7 @@ const LoginForm = () => {
   return (
     <div className="lf-container">
       <form onSubmit={handleSubmit}>
-        <h2 className="lf-titulo">Bibliocraft</h2>
+        <h2 className="lf-titulo">Bibliosoftware</h2>
         <div className="lf-inputs">
           <input
             type="text"
@@ -73,6 +85,7 @@ const LoginForm = () => {
           />
           <FaUser className="lf-icono" />
         </div>
+
         <div className="lf-inputs">
           <input
             type={showPassword ? "text" : "password"}
@@ -90,16 +103,20 @@ const LoginForm = () => {
           </span>
           <FaLock className="lf-icono" />
         </div>
+
         <div className="lf-recuperarCon">
-          <a href="">¿Olvidaste tu contraseña?</a>
+          <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
         </div>
+
         <button type="submit" className="lf-boton">
           Iniciar Sesión
         </button>
+
         {errorMsg && <p className="lf-error">{errorMsg}</p>}
+
         <div className="lf-registrar">
           <p>
-            ¿No tienes una cuenta? <a href="">Regístrate</a>
+            ¿No tienes una cuenta? <a href="/register">Regístrate</a>
           </p>
         </div>
       </form>
