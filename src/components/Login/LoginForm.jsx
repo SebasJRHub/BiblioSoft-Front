@@ -73,7 +73,7 @@ const LoginForm = () => {
   return (
     <div className="lf-container">
       <form onSubmit={handleSubmit}>
-        <h2 className="lf-titulo">Bibliosoft</h2>
+        <h2 className="lf-titulo">Bibliosoftware</h2>
         <div className="lf-inputs">
           <input
             type="text"
@@ -105,7 +105,7 @@ const LoginForm = () => {
         </div>
 
         <div className="lf-recuperarCon">
-          <Link to="/forgot">¿Olvidaste tu contraseña?</Link>
+          <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
         </div>
 
         <button type="submit" className="lf-boton">

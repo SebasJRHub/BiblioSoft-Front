@@ -20,10 +20,21 @@ export default function UserDashboard() {
         </button>
 
         <button
+          className="user-btn"
+          onClick={() => {
+            logout();
+            navigate("/buscar");
+          }}
+        >
+          BUSCAR LIBROS
+        </button>
+
+        <button
           className="user-btn logout-btn"
           onClick={() => {
             logout();
-            navigate("/login");
+            navigate("/");
+
           }}
         >
           Cerrar Sesión

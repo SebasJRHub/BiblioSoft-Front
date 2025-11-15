@@ -22,7 +22,8 @@ export default function AdminDashboard() {
           className="admin-btn logout-btn"
           onClick={() => {
             logout();
-            navigate("/login");
+            navigate("/");
+
           }}
         >
           Cerrar Sesión
