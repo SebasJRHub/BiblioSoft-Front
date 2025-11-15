@@ -1,6 +1,5 @@
 /* Fondo general */
 body {
-  color: white;
   background-color: rgb(66, 0, 0);
 }
 
@@ -28,7 +27,7 @@ body {
   font-size: 26px;
   margin-bottom: 22px;
   text-transform: uppercase;
-  color: white;
+
 }
 
 /* Inputs igual que login */

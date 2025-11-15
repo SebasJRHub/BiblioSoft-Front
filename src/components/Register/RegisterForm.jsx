@@ -47,6 +47,7 @@ const RegisterForm = () => {
     }
 
     try {
+
     await axios.post("http://localhost:8080/api/user/register", formData);
     setSuccessMsg("Registro exitoso. Ahora puedes iniciar sesión.");
     setTimeout(() => navigate("/"), 2000);

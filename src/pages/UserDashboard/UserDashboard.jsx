@@ -18,6 +18,7 @@ export default function UserDashboard() {
         >
           Cambiar Contraseña
         </button>
+
         <button
           className="user-btn"
           onClick={() => {
@@ -27,16 +28,17 @@ export default function UserDashboard() {
         >
           BUSCAR LIBROS
         </button>
+
         <button
           className="user-btn logout-btn"
           onClick={() => {
             logout();
             navigate("/");
+
           }}
         >
           Cerrar Sesión
         </button>
-        
 
       </div>
     </div>
