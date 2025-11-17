@@ -117,8 +117,8 @@ function ResetPassword() {
                     <label htmlFor="mostra|rPassword">Mostrar contraseña</label>
                 </div>
                 <div className='rp-botones'>
-                    <button type='submit' className='rp-boton' disabled={submitting}>
-                        {submitting ? "Enviando..." : "Enviar"}
+                     <button type='submit' className='rp-boton' >
+                       ENVIAR
                     </button>
                     <Link to={"/forgot-password"} className='rp-boton'><button type='reset' className='rp-boton'>Cancelar</button></Link>
                 </div>
