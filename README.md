@@ -1,6 +1,6 @@
 # 📚 BiblioSoft - Frontend
 
-Sistema de gestión de biblioteca para la Universidad del Valle - Interfaz de Usuario desarrollada por TeKvrA
+Sistema de gestión de biblioteca para la Universidad del Valle
 
 [![React](https://img.shields.io/badge/React-19.1.1-blue.svg)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.1.7-646CFF.svg)](https://vitejs.dev/)
