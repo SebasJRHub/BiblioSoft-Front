@@ -346,7 +346,7 @@ logout(); // Limpia localStorage y redirige
 
 ### Agregar Libro
 - Título: obligatorio, máx. 50 caracteres
-- Autor: obligatorio, máx. 70 caracteres (default: "TeKvrA")
+- Autor: obligatorio, máx. 70 caracteres
 - Año: número válido, no mayor al año actual
 - Editorial: obligatoria, máx. 70 caracteres
 
