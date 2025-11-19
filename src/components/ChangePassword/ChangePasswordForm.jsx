@@ -64,6 +64,7 @@ const ChangePassword = () => {
       setTimeout(() => {
         navigate("/");
       }, 2000);
+
     } catch (error) {
       setError("Error de conexión con el servidor");
       setMessage("");
@@ -77,6 +78,7 @@ const ChangePassword = () => {
     setConfirmPassword("");
     setError("");
     setMessage("");
+    navigate("/dashboard-user");
   };
 
   return (
@@ -92,6 +94,7 @@ const ChangePassword = () => {
             required
           />
         </div>
+
         <div className="cp-input-group">
           <input
             type={showPasswords ? "text" : "password"}
@@ -101,6 +104,7 @@ const ChangePassword = () => {
             required
           />
         </div>
+
         <div className="cp-input-group">
           <input
             type={showPasswords ? "text" : "password"}
@@ -127,7 +131,7 @@ const ChangePassword = () => {
           <button
             type="button"
             className="cp-boton cp-boton-cancelar"
-            onClick={() => navigate("/dashboard-user")}
+            onClick={handleCancel}
           >
             Cancelar
           </button>
