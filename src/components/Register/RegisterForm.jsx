@@ -62,11 +62,11 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="lf-container">
+    <div className="rf-container">
       <form onSubmit={handleSubmit}>
-        <h2 className="lf-titulo">Registro</h2>
+        <h2 className="rf-titulo">Registro</h2>
 
-        <div className="lf-inputs">
+        <div className="rf-inputs">
           <input
             type="text"
             name="firstname"
@@ -77,10 +77,10 @@ const RegisterForm = () => {
             pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
             title="Solo son admitidas letras en este campo"
           />
-          <FaUser className="lf-icono" />
+          <FaUser className="rf-icono" />
         </div>
 
-        <div className="lf-inputs">
+        <div className="rf-inputs">
           <input
             type="text"
             name="lastname"
@@ -91,10 +91,10 @@ const RegisterForm = () => {
             pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
             title="Solo son admitidas letras en este campo"
           />
-          <FaUser className="lf-icono" />
+          <FaUser className="rf-icono" />
         </div>
 
-        <div className="lf-inputs">
+        <div className="rf-inputs">
           <input
             type="text"
             name="username"
@@ -105,10 +105,10 @@ const RegisterForm = () => {
             maxLength={10}
             title="Identificacion dentro del sitio web"
           />
-          <FaUserPlus className="lf-icono" />
+          <FaUserPlus className="rf-icono" />
         </div>
 
-        <div className="lf-inputs">
+        <div className="rf-inputs">
           <input
             type="email"
             name="email"
@@ -118,10 +118,10 @@ const RegisterForm = () => {
             onChange={handleChange}
             title="Solo correos electronicos '@' "
           />
-          <FaEnvelope className="lf-icono" />
+          <FaEnvelope className="rf-icono" />
         </div>
 
-        <div className="lf-inputs">
+        <div className="rf-inputs">
           <input
             type="text"
             name="code"
@@ -134,10 +134,10 @@ const RegisterForm = () => {
             pattern="[0-9]+"
             title="Solo números, entre 5 y 9 dígitooos"
           />
-          <FaIdBadge className="lf-icono" />
+          <FaIdBadge className="rf-icono" />
         </div>
 
-        <div className="lf-inputs">
+        <div className="rf-inputs">
           <input
             type={showPassword ? "text" : "password"}
             name="password"
@@ -148,15 +148,15 @@ const RegisterForm = () => {
             title="Debe contener minimo 1 mayuscula, 1 número y 8 caracteres"
           />
           <span
-            className="lf-iconoOjo"
+            className="rf-iconoOjo"
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
-          <FaLock className="lf-icono" />
+          <FaLock className="rf-icono" />
         </div>
 
-        <div className="lf-inputs">
+        <div className="rf-inputs">
           <input
             type="password"
             name="confirmPassword"
@@ -165,19 +165,19 @@ const RegisterForm = () => {
             value={formData.confirmPassword}
             onChange={handleChange}
           />
-          <FaLock className="lf-icono" />
+          <FaLock className="rf-icono" />
         </div>
 
-        <button type="submit" className="lf-boton">
+        <button type="submit" className="rf-boton">
           Registrarse
         </button>
 
-        {errorMsg && <p className="lf-error">{errorMsg}</p>}
-        {successMsg && <p className="lf-exito">{successMsg}</p>}
+        {errorMsg && <p className="rf-error">{errorMsg}</p>}
+        {successMsg && <p className="rf-exito">{successMsg}</p>}
 
-        <div className="lf-registrar">
+        <div className="rf-registrar">
           <p>
-            ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
+            ¿Ya tienes cuenta? <a href="/">Inicia sesión</a>
           </p>
         </div>
       </form>

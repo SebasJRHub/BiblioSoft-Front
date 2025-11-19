@@ -1,22 +1,23 @@
-
-.user-container {
-  width: 100%;
-  color: white;
-  height: 100vh;
-
+.header-user{
+  
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    height: 70px;
+    padding: 10px;
+    align-items: center;
 }
-
-.user-title {
-  text-align: center;
-  font-size: 30px;
-  margin-bottom: 25px;
-  text-transform: uppercase;
+.title{
+    color:white;
+    align-items: center;
+    text-transform: uppercase;
 }
+.nav-links{
+    display:flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 20px;
+    align-items: center;
 
-.user-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
 }
 
 .user-btn {

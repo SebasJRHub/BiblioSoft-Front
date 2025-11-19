@@ -2,13 +2,16 @@ import React from "react";
 import "./UserDashboard.css";
 import { logout } from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
+import HeaderUser from "../../components/HeaderUser/HeaderUser";
 
 export default function UserDashboard() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
+    
     <div className="user-container">
-      <h2 className="user-title">Panel de Usuario</h2>
+      <HeaderUser />
+      {/* <h2 className="user-title">Panel de Usuario</h2>
 
       <div className="user-buttons">
 
@@ -38,7 +41,7 @@ export default function UserDashboard() {
         </button>
         
 
-      </div>
+      </div> */}
     </div>
   );
 }
