@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 import AdminPrestamos from "../Prestamos/AdminPrestamos";
 import BuscarPorCodigo from "../BuscarPorCodigo/BuscarPorCodigo";
+import LoanRequestsTable from "../../components/Prestamos/LoanRequestsTable";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState("buscar");
+  const [selectedOption, setSelectedOption] = useState("solicitados");
 
   return (
     <div className="dashboard-container">
@@ -21,6 +22,13 @@ export default function AdminDashboard() {
           onClick={() => setSelectedOption("buscar")}
         >
           Buscar Usuario
+        </button>
+
+        <button
+          className="sidebar-btn"
+          onClick={() => setSelectedOption("solicitados")}
+        >
+          Solicitudes
         </button>
 
         <button
@@ -44,6 +52,7 @@ export default function AdminDashboard() {
       <div className="content">
         {selectedOption === "buscar" && <BuscarPorCodigo />}
         {selectedOption === "prestamos" && <AdminPrestamos />}
+        {selectedOption === "solicitados" && <LoanRequestsTable />}
       </div>
 
     </div>
