@@ -21,6 +21,10 @@ class LibroService {
   buscarLibros(query) {
       return axios.get(`${API_URL}/search?query=${query}`);
     }
+
+  devolverLibro(idLibro) {
+    return axios.put(`${API_URL}/devolver/${idLibro}`);
+    }
 }
 
 export default new LibroService();
