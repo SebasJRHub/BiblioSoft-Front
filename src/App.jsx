@@ -10,6 +10,7 @@ import Buscar from "./pages/Buscar/Buscar";
 import Register from "./pages/Register/Register";
 import Forgot from "./pages/ForgotPassword/Forgot.jsx";
 import Reset from "./pages/ResetPassword/Reset.jsx";
+import MisPrestamos from "./pages/MisPrestamos/MisPrestamos.jsx";
 
 
 
@@ -22,8 +23,9 @@ function App() {
         <Route path="/search-user" element={<BuscarPorCodigo />} />
         <Route path="/dashboard-admin" element={<AdminDashboard />} />
         <Route path="/dashboard-user" element={<UserDashboard />} />
-        <Route path="/buscar" element={<Buscar />} />
+        <Route path="/search-book" element={<Buscar />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/mis-prestamos" element={<MisPrestamos />} />
         <Route path="/" element={<Login />} />
         <Route path="/forgot-password" element={<Forgot />} />
         <Route path="/reset-password" element={<Reset />} />

@@ -29,15 +29,17 @@ input::-webkit-clear-button {
 }
 
 /* -------- contenedor y tipografía -------- */
-.lf-container {
+.rf-container {
     width: 420px;
     background-color: rgb(114, 0, 0);
     border: 2px solid white;
     border-radius: 20px;
     padding: 30px 40px;
+    min-height: 600px;
+    height: auto;
 }
 
-.lf-titulo {
+.rf-titulo {
     color: rgb(255, 255, 255);
     font-size: 36px;
     text-transform: uppercase;
@@ -45,7 +47,7 @@ input::-webkit-clear-button {
 }
 
 /* -------- inputs y iconos -------- */
-.lf-container .lf-inputs {
+.rf-container .rf-inputs {
     position: relative;
     margin: 20px 0;
     width: 100%;
@@ -53,7 +55,7 @@ input::-webkit-clear-button {
     border-color: #ffffff;
 }
 
-.lf-inputs input {
+.rf-inputs input {
     width: 100%;
     height: 100%;
     border-radius: 40px;
@@ -64,12 +66,12 @@ input::-webkit-clear-button {
     color: white;
 }
 
-.lf-inputs input::placeholder {
+.rf-inputs input::placeholder {
     color: rgb(255, 255, 255, 0.5);
 }
 
 /* icono izquierdo */
-.lf-inputs .lf-icono {
+.rf-inputs .rf-icono {
     position: absolute;
     left: 12px;
     top: 50%;
@@ -79,7 +81,7 @@ input::-webkit-clear-button {
 }
 
 /* icono ojo/derecha */
-.lf-iconoOjo {
+.rf-iconoOjo {
     position: absolute;
     right: 12px;
     top: 50%;
@@ -90,7 +92,7 @@ input::-webkit-clear-button {
 }
 
 /* -------- links y botones -------- */
-.lf-recuperarCon {
+.rf-recuperarCon {
     display: flex;
     flex-direction: row;
     justify-content: right;
@@ -98,17 +100,17 @@ input::-webkit-clear-button {
     font-size: 13px;
 }
 
-.lf-recuperarCon a {
+.rf-recuperarCon a {
     color: rgb(255, 255, 255);
     font-weight: 600;
     text-decoration: none;
 }
 
-.lf-recuperarCon a:hover {
+.rf-recuperarCon a:hover {
     text-decoration: underline;
 }
 
-.lf-boton {
+.rf-boton {
     width: 100%;
     outline: none;
     border: none;
@@ -123,25 +125,25 @@ input::-webkit-clear-button {
     margin-top: 10px;
 }
 
-.lf-registrar {
+.rf-registrar {
     font-size: 13px;
     text-align: center;
     margin: 15px 20px;
     color: rgb(255, 255, 255);
 }
 
-.lf-registrar p a {
+.rf-registrar p a {
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: 600;
 }
 
-.lf-registrar p a:hover {
+.rf-registrar p a:hover {
     text-decoration: underline;
 }
 
 /* -------- mensajes -------- */
-.lf-error {
+.rf-error {
     margin-top: 15px;
     text-align: center;
     color: #ffb3b3;
@@ -153,7 +155,7 @@ input::-webkit-clear-button {
     animation: fadeIn 0.3s ease-in-out;
 }
 
-.lf-exito {
+.rf-exito {
     margin-top: 15px;
     text-align: center;
     color: #b3ffb3;
