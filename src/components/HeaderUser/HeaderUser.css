@@ -1,0 +1,51 @@
+.header-user{
+    background-color: rgb(117, 0, 0);
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    height: 70px;
+    padding: 10px;
+    align-items: center;
+}
+.title{
+    color:white;
+    align-items: center;
+    text-transform: uppercase;
+}
+.nav-links{
+    display:flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 20px;
+    align-items: center;
+
+}
+
+.nav-links .logout-icon{
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 40px;
+  border: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 30px;
+}
+
+.user-btn:hover {
+  background-color: rgb(221, 3, 3);
+}
+
+.logout-btn {
+  background-color: rgb(87, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.logout-btn:hover {
+  background-color: rgb(240, 240, 240);
+}
+.nav-links .links{
+  text-decoration: none;
+  color:  rgb(255, 255, 255);
+  font-weight: 700;
+  text-transform: uppercase;
+}

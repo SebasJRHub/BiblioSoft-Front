@@ -4,7 +4,7 @@ import "./ChangePassword.css";
 
 export default function ChangePassword() {
   return (
-    <div className="cp-page">
+    <div className="center">
       <ChangePasswordForm />
     </div>
   );
