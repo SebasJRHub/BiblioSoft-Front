@@ -1,137 +1,58 @@
-/* 🎯 Contenedor centrado sin fondo extra */
-.buscar-container {
+.catalogo-container {
+  width: 90%;
+  margin: 20px auto;
+  color: #fff;
+  
+}
+.catalogo-container .titulo{
+  font-size: 35px;
+  text-transform: uppercase;
+  color:#ffffff;
+  backdrop-filter: blur(10px);
+  border: 0.1px solid #38000017;
+  width: auto;
+  max-width: 400px;
+  text-align: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.catalogo-buscador {
+  margin: 35px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  color: #222;
+  height: 50px;
+  align-items: center;
 }
-
-/* 🔴 Título atractivo */
-.buscar-container h2 {
-  font-size: 2.5rem;
+.catalogo-buscador h2{
+  font-size: 20px;
+  color: #000000;
   font-weight: 700;
-  color: #e53935; /* rojo elegante */
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 25px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* 🔍 Barra de búsqueda centrada */
-.buscar-barra {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  max-width: 600px;
-  width: 90%;
-}
-
-/* Campo de texto */
-.buscar-barra input {
-  flex: 1;
-  padding: 12px 18px;
-  border: 2px solid #e53935;
-  border-radius: 30px;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(3px);
-}
-
-.buscar-barra input:focus {
-  box-shadow: 0 0 10px rgba(229, 57, 53, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Botón */
-.buscar-barra button {
-  background-color: #e53935;
-  color: white;
+.catalogo-buscador input {
+  width: 60%;
+  padding: 12px 20px;
   border: none;
-  padding: 12px 24px;
+  background: #380000;
+  color: #fff;
   border-radius: 30px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  font-size: 16px;
+}
+.catalogo-buscador input::placeholder{
+  color: white;
 }
 
-.buscar-barra button:hover {
-  background-color: #c62828;
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(198, 40, 40, 0.4);
+.lista-libros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
 }
 
-/* 📚 Resultados centrados */
-.resultados {
-  margin-top: 35px;
-  max-width: 600px;
-  width: 90%;
-  animation: fadeIn 0.6s ease;
-}
-
-.resultados ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.resultados li {
-  background: rgba(255, 255, 255, 0.85);
-  border-left: 4px solid #e53935;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  padding: 14px 18px;
-  text-align: left;
-  backdrop-filter: blur(4px);
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-
-.resultados li:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-3px);
-}
-
-/* ⚠️ Mensaje sin resultados */
 .sin-resultados {
-  color: #d32f2f;
-  font-weight: 600;
-  margin-top: 20px;
-  font-size: 1.1rem;
-  animation: fadeIn 0.6s ease;
-}
-
-/* 💫 Animación suave */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 📱 Responsive */
-@media (max-width: 600px) {
-  .buscar-barra {
-    flex-direction: column;
-  }
-
-  .buscar-barra button {
-    width: 100%;
-  }
-
-  .buscar-container h2 {
-    font-size: 2rem;
-  }
+  text-align: center;
+  color: #000000;
+  font-size: 20px;
 }

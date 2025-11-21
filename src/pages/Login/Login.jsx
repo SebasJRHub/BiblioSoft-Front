@@ -2,7 +2,7 @@ import LoginForm from '../../components/Login/LoginForm';
 import './Login.css';
 function Login() {
   return (
-    <div>
+    <div className='center'>
         <LoginForm />
     </div>
         );

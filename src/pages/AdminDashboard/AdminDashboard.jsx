@@ -23,6 +23,12 @@ export default function AdminDashboard() {
         >
           Buscar Usuario
         </button>
+        <button
+          className="admin-btn"
+          onClick={() => navigate("/add-book")}
+        >
+          Agregar Libro
+        </button>
 
         <button
           className="sidebar-btn"
