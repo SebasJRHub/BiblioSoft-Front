@@ -10,12 +10,9 @@ export default function BuscarPorCodigo() {
   const handleCodeChange = (e) => {
     const value = e.target.value;
 
-    // Validar solo números
     if (!/^\d*$/.test(value)) {
       setErrorInput("Solo se permiten números.");
-    }
-    // Validar máximo 20 caracteres
-    else if (value.length > 20) {
+    } else if (value.length > 20) {
       setErrorInput("Código inválido, máximo 20 caracteres.");
     } else {
       setErrorInput("");
@@ -101,26 +98,36 @@ export default function BuscarPorCodigo() {
 
         {usuario && (
           <div className="result-box">
-            <h3>Información del Usuario</h3>
-            <p><strong>Nombre:</strong> {usuario.nombre}</p>
-            <p><strong>Código:</strong> {usuario.codigo}</p>
+            <h3 className="section-title">Información del Usuario</h3>
 
-            <h3>Préstamos Realizados</h3>
+            <div className="info-box">
+              <p><strong>Nombre:</strong> {usuario.nombre}</p>
+              <p><strong>Código:</strong> {usuario.codigo}</p>
+            </div>
+
+            <h3 className="section-title">Préstamos Realizados</h3>
+
             {usuario.prestamosRealizados.length > 0 ? (
-              <ul>
+              <div className="loans-grid">
                 {usuario.prestamosRealizados.map((p, i) => (
-                  <li key={i}>ID: {p.id}</li>
+                  <div key={i} className="loan-card">
+                    <p><strong>ID del préstamo:</strong> {p.id}</p>
+                    <p><strong>Libro:</strong> {p.libro?.titulo}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             ) : (
               <p className="empty">No hay préstamos registrados</p>
             )}
 
-            <h3>Libros en Poder</h3>
+            <h3 className="section-title">Libros en Poder</h3>
+
             {usuario.librosEnPoder.length > 0 ? (
-              <ul>
+              <ul className="books-list">
                 {usuario.librosEnPoder.map((l, i) => (
-                  <li key={i}>{l.titulo} — {l.autor}</li>
+                  <li key={i} className="book-item">
+                    {l.titulo} — {l.autor}
+                  </li>
                 ))}
               </ul>
             ) : (

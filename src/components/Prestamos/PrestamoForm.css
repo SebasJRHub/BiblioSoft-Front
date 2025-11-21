@@ -1,0 +1,30 @@
+.prestamo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 420px;
+}
+
+.prestamo-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.prestamo-btn {
+  background-color: #1976d2;
+  border: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.prestamo-btn:hover {
+  background-color: #125ca2;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
