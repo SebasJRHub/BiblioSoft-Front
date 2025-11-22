@@ -18,7 +18,7 @@ function MisPrestamos() {
       setError('');
 
       const token = localStorage.getItem('token');
-      
+
       if (!token) {
         setError('Debes iniciar sesión para ver tus préstamos');
         setLoading(false);
@@ -86,8 +86,8 @@ function MisPrestamos() {
     });
   };
 
-  const prestamosFiltrados = filtroEstado === 'TODOS' 
-    ? prestamos 
+  const prestamosFiltrados = filtroEstado === 'TODOS'
+    ? prestamos
     : prestamos.filter(p => p.estado === filtroEstado);
 
   const contarPorEstado = (estado) => {
@@ -142,31 +142,31 @@ function MisPrestamos() {
 
       {/* Filtros */}
       <div className="filtros">
-        <button 
+        <button
           className={filtroEstado === 'TODOS' ? 'filtro-btn active' : 'filtro-btn'}
           onClick={() => setFiltroEstado('TODOS')}
         >
           Todos ({prestamos.length})
         </button>
-        <button 
+        <button
           className={filtroEstado === 'SOLICITADO' ? 'filtro-btn active' : 'filtro-btn'}
           onClick={() => setFiltroEstado('SOLICITADO')}
         >
           Solicitados
         </button>
-        <button 
+        <button
           className={filtroEstado === 'PRESTADO' ? 'filtro-btn active' : 'filtro-btn'}
           onClick={() => setFiltroEstado('PRESTADO')}
         >
           Prestados
         </button>
-        <button 
+        <button
           className={filtroEstado === 'DEVUELTO' ? 'filtro-btn active' : 'filtro-btn'}
           onClick={() => setFiltroEstado('DEVUELTO')}
         >
           Devueltos
         </button>
-        <button 
+        <button
           className={filtroEstado === 'RECHAZADO' ? 'filtro-btn active' : 'filtro-btn'}
           onClick={() => setFiltroEstado('RECHAZADO')}
         >
@@ -174,7 +174,7 @@ function MisPrestamos() {
         </button>
       </div>
 
-      {/* Carrusel de préstamos */}
+
       <div className="carousel-container">
 
         <div className="prestamos-lista" ref={scrollRef}>
@@ -187,7 +187,7 @@ function MisPrestamos() {
               <div key={prestamo.id} className="prestamo-card">
                 <div className="prestamo-header">
                   <h3>{prestamo.libro?.titulo || 'Libro desconocido'}</h3>
-                  <span 
+                  <span
                     className="estado-badge"
                     style={{ backgroundColor: getEstadoColor(prestamo.estado) }}
                   >
@@ -215,22 +215,32 @@ function MisPrestamos() {
                     <span className="fecha-label">Solicitado:</span>
                     <span className="fecha-value">{formatearFecha(prestamo.fechaSolicitud)}</span>
                   </div>
-                  
+
                   {prestamo.fechaPrestamo && prestamo.estado !== 'SOLICITADO' && (
                     <div className="fecha-item">
                       <span className="fecha-label">Prestado:</span>
                       <span className="fecha-value">{formatearFecha(prestamo.fechaPrestamo)}</span>
                     </div>
                   )}
-                  
-                  {prestamo.fechaDevolucion && prestamo.estado !== 'SOLICITADO' && (
+
+                  {prestamo.estado === 'PRESTADO' && (
                     <div className="fecha-item">
-                      <span className="fecha-label">
-                        {prestamo.estado === 'PRESTADO' ? 'Vence:' : ' Devuelto:'}
+                      <span className="fecha-label">Vence:</span>
+                      <span className="fecha-value">
+                        {formatearFecha(prestamo.fechaDevolucion)}
                       </span>
-                      <span className="fecha-value">{formatearFecha(prestamo.fechaDevolucion)}</span>
                     </div>
                   )}
+
+                  {prestamo.estado === 'DEVUELTO' && (
+                    <div className="fecha-item">
+                      <span className="fecha-label">Devuelto:</span>
+                      <span className="fecha-value">
+                        {formatearFecha(prestamo.fechaDevolucion)}
+                      </span>
+                    </div>
+                  )}
+
                 </div>
               </div>
             ))
@@ -238,8 +248,8 @@ function MisPrestamos() {
         </div>
       </div>
 
-      
-      
+
+
     </div>
   );
 }

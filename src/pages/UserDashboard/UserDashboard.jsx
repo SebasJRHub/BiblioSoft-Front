@@ -46,18 +46,15 @@ export default function UserDashboard() {
         <div className="sections">
           <section>
              <h2>Catalogo de libros</h2>
-             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus numquam consequatur ipsa nesciunt inventore blanditiis qui vitae culpa.
-               Quis iusto nemo nesciunt molestiae assumenda labore magnam quo aliquam iste in!</p>
+             <p>Explora todos los libros disponibles en la biblioteca y encuentra tu próxima lectura</p>
           </section>
           <section>
               <h2>Mis prestamos</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facere aliquid praesentium minus explicabo quisquam impedit!
-                 Non nam quos omnis, ratione, aliquid doloremque iste eligendi sequi consectetur quo minima ex.</p>
+              <p>Revisa los libros que has solicitado, los que tienes pendientes por devolver y su estado actual.</p>
           </section>
           <section>
               <h2>Ajustes de cuenta</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi doloribus incidunt omnis nam repudiandae. Minus voluptatem molestiae
-                 quod doloribus, deserunt earum ut ducimus debitis? Nesciunt harum laborum aliquam natus ex.</p>
+              <p>Actualiza tu información personal, cambia tu contraseña y gestiona la configuración de tu perfil.</p>
           </section>
         </div>
       </main>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AddBookForm.css";
-import { FaBook, FaUser, FaCalendar, FaBuilding } from "react-icons/fa";
+import { FaBook, FaUser, FaCalendar, FaBuilding, FaBoxes } from "react-icons/fa";
 import LibroService from "../../services/LibroService";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,9 @@ const AddBookForm = () => {
         autor: "",
         anio: "",
         editorial: "",
-        estado: "DISPONIBLE",   // estado por defecto
+        cantidadTotal: "",
+        cantidadDisponible: "",
+        estado: "DISPONIBLE",
     });
 
     const [errorMsg, setErrorMsg] = useState("");
@@ -18,25 +20,20 @@ const AddBookForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    // Validaciones corregidas
-    const validarTitulo = (titulo) => {
-        return titulo.trim().length > 0 && titulo.length <= 50;
-    };
-
-    const validarAutor = (autor) => {
-        return autor.trim().length > 0 && autor.length <= 70;
-    };
-
+    // ---------------- VALIDACIONES ----------------
+    const validarTitulo = (titulo) => titulo.trim().length > 0 && titulo.length <= 50;
+    const validarAutor = (autor) => autor.trim().length > 0 && autor.length <= 70;
     const validarAnio = (anio) => {
         const year = parseInt(anio, 10);
         const currentYear = new Date().getFullYear();
         return !isNaN(year) && year >= 1000 && year <= currentYear;
     };
+    const validarEditorial = (editorial) => editorial.trim().length > 0 && editorial.length <= 70;
 
-    const validarEditorial = (editorial) => {
-        return editorial.trim().length > 0 && editorial.length <= 70;
-    };
+    const validarCantidades = () =>
+        Number(bookData.cantidadDisponible) <= Number(bookData.cantidadTotal);
 
+    // ---------------- HANDLE CHANGE ----------------
     const handleChange = (e) => {
         const { name, value } = e.target;
         setBookData({ ...bookData, [name]: value });
@@ -44,35 +41,29 @@ const AddBookForm = () => {
         setSuccessMsg("");
     };
 
+    // ---------------- HANDLE SUBMIT ----------------
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorMsg("");
         setSuccessMsg("");
 
-        if (!validarTitulo(bookData.titulo)) {
-            setErrorMsg("El título es obligatorio y debe tener máximo 50 caracteres");
-            return;
-        }
-        if (!validarAutor(bookData.autor)) {
-            setErrorMsg("El autor es obligatorio y debe tener máximo 70 caracteres");
-            return;
-        }
-        if (!validarAnio(bookData.anio)) {
-            setErrorMsg("El año debe ser válido y no mayor al año actual");
-            return;
-        }
-        if (!validarEditorial(bookData.editorial)) {
-            setErrorMsg("La editorial es obligatoria y debe tener máximo 70 caracteres");
-            return;
-        }
+        if (!validarTitulo(bookData.titulo)) return setErrorMsg("El título es obligatorio y debe tener máximo 50 caracteres");
+        if (!validarAutor(bookData.autor)) return setErrorMsg("El autor es obligatorio y debe tener máximo 70 caracteres");
+        if (!validarAnio(bookData.anio)) return setErrorMsg("El año debe ser válido y no mayor al actual");
+        if (!validarEditorial(bookData.editorial)) return setErrorMsg("La editorial es obligatoria y debe tener máximo 70 caracteres");
+        if (!validarCantidades()) return setErrorMsg("La cantidad disponible no puede ser mayor a la cantidad total");
 
         setIsLoading(true);
 
         try {
             const bookToSave = {
-                ...bookData,
+                titulo: bookData.titulo,
+                autor: bookData.autor,
                 anio: parseInt(bookData.anio, 10),
-                estado: "DISPONIBLE", // aseguramos el valor al enviar
+                editorial: bookData.editorial,
+                cantidadTotal: parseInt(bookData.cantidadTotal, 10),
+                cantidadDisponible: parseInt(bookData.cantidadDisponible, 10),
+                estado: "DISPONIBLE",
             };
 
             const response = await LibroService.saveBook(bookToSave);
@@ -86,7 +77,9 @@ const AddBookForm = () => {
                     autor: "",
                     anio: "",
                     editorial: "",
-                    estado: "DISPONIBLE", // estado por defecto al limpiar
+                    cantidadTotal: "",
+                    cantidadDisponible: "",
+                    estado: "DISPONIBLE",
                 });
                 setSuccessMsg("");
             }, 1500);
@@ -102,10 +95,9 @@ const AddBookForm = () => {
         }
     };
 
-    const handleCancel = () => {
-        navigate(-1);
-    };
+    const handleCancel = () => navigate(-1);
 
+    // ---------------- RETURN JSX ----------------
     return (
         <div className="add-book-wrapper">
             <form onSubmit={handleSubmit} className="add-book-form">
@@ -114,6 +106,7 @@ const AddBookForm = () => {
                 {errorMsg && <div className="error-message">{errorMsg}</div>}
                 {successMsg && <div className="success-message">{successMsg}</div>}
 
+                {/* TÍTULO */}
                 <div className="input-box">
                     <input
                         type="text"
@@ -127,6 +120,7 @@ const AddBookForm = () => {
                     <FaBook className="icon" />
                 </div>
 
+                {/* AUTOR */}
                 <div className="input-box">
                     <input
                         type="text"
@@ -140,6 +134,7 @@ const AddBookForm = () => {
                     <FaUser className="icon" />
                 </div>
 
+                {/* AÑO */}
                 <div className="input-box">
                     <input
                         type="number"
@@ -154,6 +149,7 @@ const AddBookForm = () => {
                     <FaCalendar className="icon" />
                 </div>
 
+                {/* EDITORIAL */}
                 <div className="input-box">
                     <input
                         type="text"
@@ -167,21 +163,41 @@ const AddBookForm = () => {
                     <FaBuilding className="icon" />
                 </div>
 
+                {/* CANTIDAD TOTAL */}
+                <div className="input-box">
+                    <input
+                        type="number"
+                        name="cantidadTotal"
+                        placeholder="Cantidad total"
+                        value={bookData.cantidadTotal}
+                        onChange={handleChange}
+                        min="1"
+                        required
+                    />
+                    <FaBoxes className="icon" />
+                </div>
+
+                {/* CANTIDAD DISPONIBLE */}
+                <div className="input-box">
+                    <input
+                        type="number"
+                        name="cantidadDisponible"
+                        placeholder="Cantidad disponible"
+                        value={bookData.cantidadDisponible}
+                        onChange={handleChange}
+                        min="0"
+                        required
+                    />
+                    <FaBoxes className="icon" />
+                </div>
+
+                {/* BOTONES */}
                 <div className="button-group">
-                    <button
-                        type="submit"
-                        className="submit-btn"
-                        disabled={isLoading}
-                    >
+                    <button type="submit" className="submit-btn" disabled={isLoading}>
                         {isLoading ? "Guardando..." : "Agregar Libro"}
                     </button>
 
-                    <button
-                        type="button"
-                        className="cancel-btn"
-                        onClick={handleCancel}
-                        disabled={isLoading}
-                    >
+                    <button type="button" className="cancel-btn" onClick={handleCancel} disabled={isLoading}>
                         Cancelar
                     </button>
                 </div>
