@@ -58,7 +58,7 @@ export default function Buscar() {
             <LibroCard key={libro.id} libro={libro} userId={userId} />
           ))
         ) : (
-          <p className="sin-resultados">⚠️ No se encontraron libros.</p>
+          <p className="sin-resultados">No se encontraron libros.</p>
         )}
       </div>
     </div>
