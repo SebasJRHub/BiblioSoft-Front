@@ -4,7 +4,7 @@ import ForgotPassword from '../../components/ForgotPassword/ForgotPassword';
 
 function Forgot(){
     return(
-        <div>
+        <div className="center">
             <ForgotPassword />
         </div>
     );

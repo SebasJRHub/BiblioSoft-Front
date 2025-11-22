@@ -44,6 +44,8 @@ const LoginForm = () => {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
       localStorage.setItem("username", response.data.username);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
 
         console.log("TOKEN RECIBIDO:", response.data.token);
         console.log("ROL RECIBIDO:", response.data.role);

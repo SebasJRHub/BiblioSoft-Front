@@ -1,12 +1,107 @@
 .user-container {
-  width: 500px;
-  background-color: rgb(114, 0, 0);
-  border: 2px solid white;
-  border-radius: 20px;
-  padding: 30px 40px;
+  display: flex;
+  height: 100vh;
+  padding: 15px;
+  gap :5px;
+
+}
+
+.column {
+  width: 400px;
+  background: rgb(99, 0, 0);
+  padding: 30px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+.column h2{
+  text-align: center;
   color: white;
-  margin: 80px auto;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  margin-bottom: 70px;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.menu{
+  display: flex;
+  flex-direction: column;
+  gap: 15px
+}
+.menu li {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  list-style: none;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  align-items: center;
+  padding-left: 10px;
+}
+.menu .icon{
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.menu a {
+  color: #ffffff;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+main{
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+  padding: 30px;
+  color: rgb(99, 0, 0);
+}
+main .title{
+  font-size: 50px;
+  color: rgb(99, 0, 0);
+  text-transform: none
+}
+main p{
+  font-size: 20px;
+}
+aside .logout-icon{
+  position:relative;
+  top: 35%;
+}
+aside .logout-icon{
+  width: 100%;
+  border-radius: 40px;
+  border: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 30px;
+}
+main .sections{
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 40px;
+}
+main section{
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.10);
+  padding: 20px;
+}
+main section h2{
+   margin-bottom: 10px;
+}
+/* 
+.user-container {
+  width: 100%;
+  color: white;
+  height: 100vh;
+
 }
 
 .user-title {
@@ -47,4 +142,4 @@
 
 .logout-btn:hover {
   background-color: rgb(240, 240, 240);
-}
+} */

@@ -3,7 +3,7 @@ import './Reset.css';
 
 function Reset(){
     return(
-        <div>
+        <div className="center">
             <ResetPassword />
         </div>
     );

@@ -1,0 +1,58 @@
+.loan-requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.loan-requests-table th,
+.loan-requests-table td {
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 15px;
+}
+
+.loan-requests-table th {
+  background: #7e0d0d;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.loan-requests-table tr:hover {
+  background: #fff5f5;
+}
+
+.btn-aprobar {
+  background: #0b8f1d;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-aprobar:hover {
+  background: #0dc428;
+}
+
+.empty {
+  padding: 18px;
+  text-align: center;
+  color: #555;
+  font-style: italic;
+}
+
+.info-msg {
+  color: #007bff;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
