@@ -6,12 +6,44 @@ function MisPrestamos() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [filtroEstado, setFiltroEstado] = useState('TODOS');
+  const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
+  const [prestamoSeleccionado, setPrestamoSeleccionado] = useState(null);
   const scrollRef = useRef(null);
 
   useEffect(() => {
     cargarMisPrestamos();
   }, []);
 
+  const renovarPrestamo = async (prestamoId) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+      `http://localhost:8080/api/prestamo/renovar/${prestamoId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Error al renovar el préstamo");
+    }
+
+    const data = await response.json();
+
+    setPrestamos(prev =>
+      prev.map(p => p.id === prestamoId ? data : p)
+    );
+
+    alert("Préstamo renovado con éxito");
+  } catch (error) {
+    alert("No se pudo renovar el préstamo");
+  }
+}
   const cargarMisPrestamos = async () => {
     try {
       setLoading(true);
@@ -46,10 +78,24 @@ function MisPrestamos() {
       setLoading(false);
     }
   };
+  const abrirConfirmacion = (prestamoId) => {
+    setPrestamoSeleccionado(prestamoId);
+    setMostrarConfirmacion(true);
+  };
+
+  const cancelarConfirmacion = () => {
+    setPrestamoSeleccionado(null);
+    setMostrarConfirmacion(false);
+  };
+
+  const confirmarRenovacion = () => {
+    renovarPrestamo(prestamoSeleccionado);
+    setMostrarConfirmacion(false);
+  };
 
   const scroll = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = 400;
+      const scrollAmount = 360;
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -86,12 +132,13 @@ function MisPrestamos() {
     });
   };
 
-  const prestamosFiltrados = filtroEstado === 'TODOS'
-    ? prestamos
-    : prestamos.filter(p => p.estado === filtroEstado);
+  const prestamosFiltrados =
+    filtroEstado === 'TODOS'
+      ? prestamos
+      : prestamos.filter((p) => p.estado === filtroEstado);
 
   const contarPorEstado = (estado) => {
-    return prestamos.filter(p => p.estado === estado).length;
+    return prestamos.filter((p) => p.estado === estado).length;
   };
 
   if (loading) {
@@ -114,13 +161,9 @@ function MisPrestamos() {
         </button>
       </div>
 
-      {error && (
-        <div className="error-message">
-          {error}
-        </div>
-      )}
+      {error && <div className="error-message">{error}</div>}
 
-      {/* Resumen de estados */}
+
       <div className="resumen-estados">
         <div className="estado-card solicitado">
           <span className="numero">{contarPorEstado('SOLICITADO')}</span>
@@ -140,7 +183,7 @@ function MisPrestamos() {
         </div>
       </div>
 
-      {/* Filtros */}
+
       <div className="filtros">
         <button
           className={filtroEstado === 'TODOS' ? 'filtro-btn active' : 'filtro-btn'}
@@ -174,8 +217,25 @@ function MisPrestamos() {
         </button>
       </div>
 
-
       <div className="carousel-container">
+        {prestamosFiltrados.length > 0 && (
+          <>
+            <button
+              className="carousel-btn left"
+              onClick={() => scroll('left')}
+              aria-label="Anterior"
+            >
+              ‹
+            </button>
+            <button
+              className="carousel-btn right"
+              onClick={() => scroll('right')}
+              aria-label="Siguiente"
+            >
+              ›
+            </button>
+          </>
+        )}
 
         <div className="prestamos-lista" ref={scrollRef}>
           {prestamosFiltrados.length === 0 ? (
@@ -242,15 +302,41 @@ function MisPrestamos() {
                   )}
 
                 </div>
+                {prestamo.estado === 'PRESTADO' && (
+                <div className="prestamo-actions">
+                  <button className={`renovar-btn ${prestamo.renovaciones >= 1 ? "btn-disabled" : ""}`}
+                  onClick={()=> abrirConfirmacion(prestamo.id)}
+                  disabled={prestamo.renovaciones >= 1}
+                  
+                  >{prestamo.renovaciones >= 1 ? "Renovación agotada" : "Renovar préstamo"}</button>
+                </div>
+                )}
               </div>
             ))
           )}
         </div>
       </div>
+      {mostrarConfirmacion && (
+        <div className="modal-overlay">
+          <div className="modal-contenido">
+            <h3>Confirmar renovación</h3>
+            <p>¿Estás seguro de que quieres renovar este préstamo?</p>
 
+            <div className="modal-botones">
+              <button className="modal-confirmar" onClick={confirmarRenovacion}>
+                Renovar
+              </button>
+              <button className="modal-cancelar" onClick={cancelarConfirmacion}>
+                Cancelar
+              </button>
 
-
+              
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
 export default MisPrestamos;
