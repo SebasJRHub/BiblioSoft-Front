@@ -10,6 +10,7 @@ import Buscar from "./pages/Buscar/Buscar";
 import Register from "./pages/Register/Register";
 import Forgot from "./pages/ForgotPassword/Forgot.jsx";
 import Reset from "./pages/ResetPassword/Reset.jsx";
+import FinesPage from "./pages/Fines/FinesPage.jsx";
 
 import Prestamos from "./pages/Prestamos/RegistrarPrestamo.jsx";
 import AdminPrestamos from "./pages/Prestamos/AdminPrestamos.jsx";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/registrar-prestamo" element={<Prestamos />} />
         <Route path="/loans" element={<AdminPrestamos />} />
         <Route path="/add-book" element={<AddBook />} />
+        <Route path="/fines" element={<FinesPage />} />
 
 
 
