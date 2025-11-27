@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import AdminPrestamos from "../Prestamos/AdminPrestamos";
 import BuscarPorCodigo from "../BuscarPorCodigo/BuscarPorCodigo";
 import LoanRequestsTable from "../../components/Prestamos/LoanRequestsTable";
+import FinesPage from "../Fines/FinesPage";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ export default function AdminDashboard() {
         >
           Buscar Usuario
         </button>
+
         <button
           className="sidebar-btn"
           onClick={() => navigate("/add-book")}
@@ -45,6 +47,13 @@ export default function AdminDashboard() {
         </button>
 
         <button
+          className="sidebar-btn"
+          onClick={() => setSelectedOption("multas")}
+        >
+          Multas
+        </button>
+
+        <button
           className="sidebar-btn logout-btn"
           onClick={() => {
             logout();
@@ -59,6 +68,7 @@ export default function AdminDashboard() {
         {selectedOption === "buscar" && <BuscarPorCodigo />}
         {selectedOption === "prestamos" && <AdminPrestamos />}
         {selectedOption === "solicitados" && <LoanRequestsTable />}
+        {selectedOption === "multas" && <FinesPage />} {/* 👈 Aquí se carga tu pantalla de multas */}
       </div>
 
     </div>
