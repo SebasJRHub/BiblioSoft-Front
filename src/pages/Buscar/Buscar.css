@@ -2,12 +2,13 @@
   width: 90%;
   margin: 20px auto;
   color: #fff;
-  
+
 }
-.catalogo-container .titulo{
+
+.catalogo-container .titulo {
   font-size: 35px;
   text-transform: uppercase;
-  color:#ffffff;
+  color: #ffffff;
   backdrop-filter: blur(10px);
   border: 0.1px solid #38000017;
   width: auto;
@@ -23,26 +24,30 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 50px;
+  height: 70px;
   align-items: center;
 }
-.catalogo-buscador h2{
-  font-size: 20px;
-  color: #000000;
-  font-weight: 700;
+
+.catalogo-buscador .buscador-input {
+  position: relative;
+  width: 60%;
 }
 
 .catalogo-buscador input {
-  width: 60%;
+  width: 100%;
   padding: 12px 20px;
   border: none;
-  background: #380000;
-  color: #fff;
+  background: #ffffff;
+  color: #520000;
   border-radius: 30px;
   font-size: 16px;
+  box-shadow: 0.1px 4px 16px rgba(0, 0, 0, 0.178);
+  outline: none;
+  height: 60px;
 }
-.catalogo-buscador input::placeholder{
-  color: white;
+
+.catalogo-buscador input::placeholder {
+  color: rgb(59, 0, 0);
 }
 
 .lista-libros {
@@ -55,4 +60,15 @@
   text-align: center;
   color: #000000;
   font-size: 20px;
+}
+
+.icono-buscar {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #520000;
+  pointer-events: none;
+
 }

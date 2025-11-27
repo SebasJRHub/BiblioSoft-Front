@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import LibroService from "../../services/LibroService";
 import LibroCard from "../../components/BookCard/BookCard";
+import { FaSearch } from "react-icons/fa";
+
 import "./Buscar.css";
 
 export default function Buscar() {
@@ -43,13 +45,15 @@ export default function Buscar() {
       <h2 className="titulo">Catálogo de Libros</h2>
 
       <div className="catalogo-buscador">
-        <h2>Busca tu libro...</h2>
-        <input
-          type="text"
-          placeholder="Buscar por título, autor o editorial..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="buscador-input">
+          <input
+            type="text"
+            placeholder="Buscar por título, autor o editorial..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <FaSearch className="icono-buscar" />
+        </div>
       </div>
 
       <div className="lista-libros">
