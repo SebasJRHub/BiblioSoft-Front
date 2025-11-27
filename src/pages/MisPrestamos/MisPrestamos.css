@@ -225,7 +225,7 @@
 
 
 .prestamo-card {
-  flex: 0 0 340px;
+  flex: 0 0 calc(50% - 10px);
   background: white;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

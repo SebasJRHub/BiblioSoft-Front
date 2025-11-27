@@ -26,7 +26,7 @@ export default function UserDashboard() {
             </li>
             <li>
               <span className="icon"><FaUserCog /></span>
-              <Link to="#">AJUSTES DE CUENTA</Link>
+              <Link to="/change-password">CAMBIAR CONTRASEÑA</Link>
             </li>
           </ul>
         </div>
@@ -53,7 +53,7 @@ export default function UserDashboard() {
             <p>Revisa los libros que has solicitado, los que tienes pendientes por devolver y su estado actual.</p>
           </section>
           <section>
-            <h2>Ajustes de cuenta</h2>
+            <h2>Cambiar contraseña</h2>
             <p>Actualiza tu información personal, cambia tu contraseña y gestiona la configuración de tu perfil.</p>
           </section>
         </div>
