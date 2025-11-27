@@ -7,11 +7,16 @@
 }
 
 .column {
-  width: 400px;
+   width: 500px;
   background: rgb(99, 0, 0);
-  padding: 30px;
+  padding: 20px;
   box-shadow: 2px 0 8px rgba(0,0,0,0.1);
   border-radius: 10px;
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.10);
+  display: flex;
+  flex-direction: column;
 }
 .column h2{
   text-align: center;
@@ -23,7 +28,9 @@
 .menu{
   display: flex;
   flex-direction: column;
-  gap: 15px
+  gap: 15px;
+  flex-grow: 1;
+
 }
 .menu li {
   display: flex;
@@ -34,6 +41,7 @@
   border-radius: 20px;
   align-items: center;
   padding-left: 10px;
+  
 }
 .menu .icon{
   font-size: 22px;
@@ -56,19 +64,25 @@ main{
   border-radius: 10px;
   padding: 30px;
   color: rgb(99, 0, 0);
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.10);
 }
 main .title{
-  font-size: 50px;
-  color: rgb(99, 0, 0);
-  text-transform: none
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+
 }
 main p{
   font-size: 20px;
+  color: black;
 }
 aside .logout-icon{
   position:relative;
-  top: 35%;
+  
 }
+
 aside .logout-icon{
   width: 100%;
   border-radius: 40px;
@@ -77,12 +91,19 @@ aside .logout-icon{
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   font-size: 30px;
+  margin-top: auto;
+  background-color: transparent;
+  padding: 10px;
 }
 main .sections{
   display: grid;
   grid-template-columns:1fr 1fr 1fr;
   gap: 10px;
   margin-top: 40px;
+}
+section:hover{
+  transform: translateY(3px);
+ 
 }
 main section{
   background: #ffffff;
@@ -91,10 +112,18 @@ main section{
   box-shadow:
     0 5px 10px rgba(0, 0, 0, 0.15),
     0 2px 5px rgba(0, 0, 0, 0.10);
-  padding: 20px;
+  
+}
+main section p{
+  padding :10px 20px;
 }
 main section h2{
-   margin-bottom: 10px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   text-align: center;
+   color: rgb(255, 255, 255);
+   background-color: rgb(99, 0, 0);
+   border-radius: 18px 18px 0 0;
 }
 /* 
 .user-container {
