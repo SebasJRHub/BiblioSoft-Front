@@ -54,7 +54,7 @@ export default function UserDashboard() {
           </section>
           <section>
             <h2>Cambiar contraseña</h2>
-            <p>Actualiza tu información personal, cambia tu contraseña y gestiona la configuración de tu perfil.</p>
+            <p>Cambia tu contraseña y gestiona la configuración de tu perfil.</p>
           </section>
         </div>
       </main>
