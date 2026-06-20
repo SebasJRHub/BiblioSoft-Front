@@ -13,7 +13,7 @@ export default function LoanRequestsTable() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:8080/loans/requesteds", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/loans/requesteds`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -34,7 +34,7 @@ export default function LoanRequestsTable() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`http://localhost:8080/loans/approve/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/loans/approve/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -21,7 +21,7 @@ export default function PrestamoForm({ onSuccess }) {
     }
 
     try {
-      const res = await fetch("http://localhost:8080/api/prestamos/crear", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/prestamos/crear`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

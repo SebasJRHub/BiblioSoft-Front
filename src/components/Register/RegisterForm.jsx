@@ -48,7 +48,7 @@ const RegisterForm = () => {
 
     try {
 
-    await axios.post("http://localhost:8080/api/user/register", formData);
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/user/register`, formData);
     setSuccessMsg("Registro exitoso. Ahora puedes iniciar sesión.");
     setTimeout(() => navigate("/"), 2000);
   } catch (error) {

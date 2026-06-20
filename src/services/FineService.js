@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/fines";
+const API_URL = `${import.meta.env.VITE_API_URL}/fines`;
 
 export const getAllFines = async () => {
   const response = await axios.get(`${API_URL}/all-fines`);

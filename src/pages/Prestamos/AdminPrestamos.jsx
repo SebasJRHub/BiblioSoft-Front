@@ -15,7 +15,7 @@ export default function AdminPrestamos() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:8080/loans/all", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/loans/all`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
@@ -35,7 +35,7 @@ export default function AdminPrestamos() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`http://localhost:8080/loans/return/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/loans/return/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

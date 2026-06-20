@@ -20,7 +20,7 @@ export default function FinesPage() {
       return;
     }
 
-    const res = await fetch("http://localhost:8080/fines/all-fines", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/fines/all-fines`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -45,7 +45,7 @@ export default function FinesPage() {
       justification: text,
     };
 
-    await fetch("http://localhost:8080/fines/exone-fine", {
+    await fetch(`${import.meta.env.VITE_API_URL}/fines/exone-fine`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -19,7 +19,7 @@ function MisPrestamos() {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:8080/api/prestamo/renovar/${prestamoId}`,
+      `${import.meta.env.VITE_API_URL}/api/prestamo/renovar/${prestamoId}`,
       {
         method: "PUT",
         headers: {
@@ -57,7 +57,7 @@ function MisPrestamos() {
         return;
       }
 
-      const response = await fetch('http://localhost:8080/api/prestamo/mis-prestamos', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/prestamo/mis-prestamos`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
