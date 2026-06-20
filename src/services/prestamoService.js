@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/prestamo";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/prestamo`;
 
 const solicitarPrestamo = async (bookId, token) => {
   console.log("🔍 Token enviado:", token);

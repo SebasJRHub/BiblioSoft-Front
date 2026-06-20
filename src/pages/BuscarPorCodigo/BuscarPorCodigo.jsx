@@ -38,7 +38,7 @@ export default function BuscarPorCodigo() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:8080/api/user/buscar/${code}`,
+        `${import.meta.env.VITE_API_URL}/api/user/buscar/${code}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
